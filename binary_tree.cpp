@@ -1,8 +1,7 @@
 /*
 Ref: 
-[1] https://gist.github.com/toboqus/def6a6915e4abd66e922
-[2] 
-[3] 
+[1] https://gist.github.com/toboqus/def6a6915e4abd66e92287
+[2] https://www.geeksforgeeks.org/binary-tree-set-1-introduction/
 */
 #include <iostream>
 using namespace std;
@@ -28,6 +27,11 @@ private:
 	void destroy_tree(node *leaf);
 	node *search(int key, node *leaf);
 	node *root;
+};
+
+class owntree {
+public:
+	node *newNode(int val);
 };
 
 btree::btree() {
@@ -122,6 +126,15 @@ node *btree::search(int key, node *leaf) {
 node *btree::search(int key) {
 	return search(key, root);
 }
+//----------------------------------
+
+node *newNode(int key) {
+	node *n = new node();
+	node->value = key;
+	node->left = NULL;
+	node->right = NULL;
+	return node;
+}
 
 int main() {
 
@@ -141,6 +154,13 @@ int main() {
 	cout << search_val1 << "\n";
 
 	delete tree;
+
+	// To make own tree:
+	node *root = newNode(10);
+	root->left = newNode(9);
+	root->right = newNode(15);
+	root->left->left = newNode(8);
+	root->right->left = newNode(11);
 	return 1;
 }
 
@@ -152,4 +172,5 @@ int main() {
 	(a) class1 obj1; obj1.function1()
 	(b) class1 *ptr_obj1 = new class1(); ptr.obj1->function1();
 	(c) class1 obj1; class1 ptr1; ptr = &obj1  
+4. Root is level 1, max nodes at a level = 2^(level-1)
 */
