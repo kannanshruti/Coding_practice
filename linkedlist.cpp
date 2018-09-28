@@ -25,6 +25,8 @@ public:
 	void deleteMid();
 	void reverse();
 	void addOne();
+	int countElementOccurences();
+	void pop();
 };
 
 list::list() {
@@ -90,45 +92,51 @@ void list::insertEnd() {
 }
 
 void list::insertPosition() {
-	node *temp, *temp_new, *temp_swap;
-	int value, position, count = 0;
+	node *temp, *new_node, *next;
+	int position, value, count = 0;
 
-	cout << " Enter position & value:\n";
+	cout << "Enter position, value: ";
 	cin >> position >> value;
-	temp_new = createNode(value);
+	cout << "\n";
+
+	new_node = createNode(value);
 
 	temp = head;
-	while(temp != NULL) {
-		cout << temp->data << " ";
+	while (temp != NULL) {
 		temp = temp->next;
-		count++;
+		++count; // Length of list
 	}
-	if (position == 1) {
-		if (head == NULL) {
-			head = temp_new;
+	if (position == 1) { // Insert @ head
+		if (count == 0) {
+			head = new_node;
 			head->next = NULL;
 		}
-		else {
-			temp_swap = head;
-			head = temp_new;
-			head->next = temp_swap;
-			temp_swap->next = NULL;
+		else if (count > 0) {
+			temp = createNode(value);
+			temp->next = head;
+			head = temp;
 		}
 	}
-	else if (position > 0 && position <= count) {
+	else if (position > 0 && position <= count) { // Insert in between
 		temp = head;
-		for (int i = 1; i <= count; i++) {
-			if (i == position-1) {
-				temp_swap = temp->next;
-				temp->next = temp_new;
-				temp_new->next = temp_swap;
-				break;
+		for (int i = 1; i <= count-1; i++) {
+			if (i+1 == position) {
+				next = temp->next;
+				new_node->next = next;
+				temp->next = new_node;
 			}
 			temp = temp->next;
 		}
 	}
+	else if (position == count+1) { // Insert at end
+		temp = head;
+		while (temp->next != NULL) {
+			temp = temp->next;
+		}
+		temp->next = new_node;
+	}
 	else {
-		cout << "Out of range\n";
+		cout << "Out of range.";
 	}
 }
 
@@ -280,15 +288,45 @@ void list::addOne() {
 	}
 }
 
-void reverse_group() {
+int list::countElementOccurences() {
 	node *temp;
-	int group;
+	temp = head;
+	int num, count = 0;
+	
+	cout << "Enter the number to be counted: ";
+	cin >> num;
 
-	cout << "Enter group number: ";
-	cin >> group;
+	while (temp != NULL) {
+		if (temp->data == num) {
+			++count;
+		}
+		temp = temp->next;
+	}
+	cout << "\nOccurences: " << count << "\n";
+}
+
+void list::pop() {
+	node *temp;
+	int value;
+	if (head == NULL) {
+		cout << "No elements to pop.";
+		return;
+	}
+	value = head->data;
+	free(head); 
+	head = head->next;
+	cout << value << "\n";
+}
+
+// void reverse_group() {
+// 	node *temp;
+// 	int group;
+
+// 	cout << "Enter group number: ";
+// 	cin >> group;
 
 	
-}
+// }
 
 int main() {
 	list list1;
@@ -306,7 +344,9 @@ int main() {
 		cout << "9. Delete mid value\n";
 		cout << "10. Reverse list\n";
 		cout << "11. Add 1 to number repr. by list\n";
-		cout << "12. Reverse in groups of k\n";
+		cout << "12. Count #occurences of element\n";
+		cout << "13. Pop value\n";
+		// cout << "12. Reverse in groups of k\n";
 		cout << "20. Exit\n";
 		cout << "Option:";
 
@@ -336,7 +376,10 @@ int main() {
 			case 11:
 				list1.addOne(); break;
 			case 12:
-				list1.reverse_group(); break;
+				list1.countElementOccurences(); break;
+			case 13:
+				list1.pop(); break;
+				// list1.reverse_group(); break;
 			case 20:
 				exit(1); break;	
 		}
