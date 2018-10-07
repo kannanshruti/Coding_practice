@@ -66,6 +66,10 @@ void BST::display(node *leaf, int level) {
 	}
 }
 
+void BST::preorder(bst.root) {
+
+}
+
 int main() {
 	int choice, value;
 
@@ -74,7 +78,7 @@ int main() {
 		cout << "Options: \n";
 		cout << "1. Insert element \n";
 		cout << "2. Display graphically\n";
-		cout << "3. Find element\n";
+		cout << "3. Pre-order traversal\n";
 		cout << "3. Delete element\n";
 		cout << "20. Exit \n";
 		cin >> choice;
