@@ -1,8 +1,8 @@
 /*
 author: kshruti
-Description: Merge two sorted linked lists, in the ascending order
-Time: 8ms
-Link: https://leetcode.com/problems/merge-two-sorted-lists/description/
+Description: Delete a particular value in the linked list
+Time: 20ms
+Link: https://leetcode.com/problems/remove-linked-list-elements/description/
 */
 #include <iostream>
 using namespace std;
