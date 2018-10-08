@@ -36,6 +36,11 @@ ListNode* Solution::newNode(int val) {
 }
 
 ListNode* Solution::deleteDuplicates(ListNode* head) {
+    /*
+    Deletes consecutive duplicates in a sorted linked list
+    @param "head": Head of the linked list
+    @param "head": Head of the unique linked list
+    */
     ListNode *curr = head, *prev = head, *next;
 
     if (head == NULL || head->next == NULL) {
