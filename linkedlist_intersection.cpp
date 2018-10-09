@@ -5,12 +5,6 @@ Link: https://leetcode.com/problems/intersection-of-two-linked-lists/
 Time: 24 ms
 */
 
-/*
-author: kshruti
-Description: Merge two sorted linked lists, in the ascending order
-Time: 8ms
-Link: https://leetcode.com/problems/merge-two-sorted-lists/description/
-*/
 #include <iostream>
 using namespace std;
 
