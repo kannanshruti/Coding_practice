@@ -15,7 +15,7 @@ struct ListNode {
 
 class Solution {
     /*
-    Defines functions to create, print and merge linked lists
+    Defines functions to create, print and run operations in linkedlists
     */
 public:
     ListNode* newNode(int val);
